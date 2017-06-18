@@ -1,4 +1,5 @@
 <div class="container">
+  <h2>Welcome!</h2>
   <!-- user login -->
   <h3>Login</h3>
   <form action="/sessions" method="post">
@@ -23,6 +24,10 @@
       <input type="text" name="user[name]" placeholder="Name">
     </div>
     <div class="">
+      <label>Alias: </label>
+      <input type="text" name="user[alias]" placeholder="Name">
+    </div>
+    <div class="">
       <label>E-mail: </label>
       <input type="text" name="user[email]" placeholder="E-mail">
     </div>
@@ -31,7 +36,7 @@
       <input type="password" name="user[password]" placeholder="Password">
     </div>
     <div class="">
-      <label>Password Confirmation: </label>
+      <label>Confirm Pwd: </label>
       <input type="password" name="user[password_confirmation]" placeholder="Password Confirmation">
     </div>
     <div class="">

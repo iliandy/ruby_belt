@@ -15,7 +15,6 @@ class ApplicationController < ActionController::Base
 
   # redirects back to secrets page if user_id in session
   def user_logged_in
-    redirect_to "/secrets" if session[:user_id]
+    redirect_to "/pokes" if session[:user_id]
   end
-
 end
