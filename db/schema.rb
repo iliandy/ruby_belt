@@ -11,19 +11,41 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170618212405) do
+ActiveRecord::Schema.define(version: 20170619163006) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
-  create_table "users", force: :cascade do |t|
+  create_table "buys", force: :cascade do |t|
+    t.integer  "user_id"
+    t.integer  "shoe_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  add_index "buys", ["shoe_id"], name: "index_buys_on_shoe_id", using: :btree
+  add_index "buys", ["user_id"], name: "index_buys_on_user_id", using: :btree
+
+  create_table "shoes", force: :cascade do |t|
     t.string   "name"
-    t.string   "alias"
+    t.decimal  "amount"
+    t.integer  "user_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  add_index "shoes", ["user_id"], name: "index_shoes_on_user_id", using: :btree
+
+  create_table "users", force: :cascade do |t|
+    t.string   "first_name"
+    t.string   "last_name"
     t.string   "email"
     t.string   "password_digest"
-    t.date     "birthdate"
     t.datetime "created_at",      null: false
     t.datetime "updated_at",      null: false
   end
 
+  add_foreign_key "buys", "shoes"
+  add_foreign_key "buys", "users"
+  add_foreign_key "shoes", "users"
 end

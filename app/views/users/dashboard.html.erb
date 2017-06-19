@@ -1,0 +1,88 @@
+| <a href="/shoes">Go to All Shoes</a>
+
+<div class="container">
+  <h3>Hi, <%= @user.first_name %>!</h3>
+
+  <h4>Sell Product</h4>
+  <form action="/shoes" method="post">
+    <input type="hidden" name="authenticity_token" value="<%= form_authenticity_token %>">
+    <div class="">
+      <label>Name</label>
+      <input type="text" name="shoe[name]" placeholder="Shoe Name">
+    </div>
+    <div class="">
+      <label>Amount</label>
+      <input type="number" step="0.01" min="0.01" name="shoe[amount]" placeholder="$0.00">
+    </div>
+    <input type="submit" value="Sell">
+
+  </form>
+
+  <!-- Unsold table -->
+  <h4>Your products not yet sold:</h4>
+  <table>
+    <tr>
+      <th>Product</th>
+      <th>Date Posted</th>
+      <th>Amount</th>
+      <th>Action</th>
+    </tr>
+
+    <% @unsold_shoes.each do |shoe| %>
+    <tr>
+      <td><%= shoe.name %></td>
+      <td><%= shoe.created_at %></td>
+      <td>$<%= shoe.amount %></td>
+      <td><a href="/shoes/<%= shoe.id %>" data-method="delete">Remove</a></td>
+    </tr>
+    <% end %>
+
+  </table>
+  <hr>
+
+  <!-- Sales table -->
+  <h4>Sales:</h4>
+  <table>
+    <tr>
+      <th>Product</th>
+      <th>Date Bought</th>
+      <th>Buyer</th>
+      <th>Amount</th>
+    </tr>
+
+    <% @sold_shoes.each do |shoe| %>
+    <tr>
+      <td><%= shoe.name %></td>
+      <td><%= shoe.created_at %></td>
+      <td><%= shoe.user.first_name %> <%= shoe.user.last_name %></td>
+      <td>$<%= shoe.amount %></td>
+    </tr>
+    <% end %>
+
+  </table>
+  <h4>Total: <%= @sold_shoes.sum(:amount) %></h4>
+  <hr>
+
+  <!-- Purchases table -->
+  <h4>Purchases:</h4>
+  <table>
+    <tr>
+      <th>Product</th>
+      <th>Date Bought</th>
+      <th>Seller</th>
+      <th>Amount</th>
+    </tr>
+
+    <% @shoes_bought.each do |shoe| %>
+    <tr>
+      <td><%= shoe.name %></td>
+      <td><%= shoe.created_at %></td>
+      <td><%= shoe.user.first_name %> <%= shoe.user.last_name %></td>
+      <td>$<%= shoe.amount %></td>
+    </tr>
+    <% end %>
+
+  </table>
+  <h4>Total: <%= @shoes_bought.sum(:amount) %></h4>
+
+</div>

@@ -20,12 +20,12 @@
   <form action="/users" method="post">
     <input type="hidden" name="authenticity_token" value="<%= form_authenticity_token %>">
     <div class="">
-      <label>Name: </label>
-      <input type="text" name="user[name]" placeholder="Name">
+      <label>First Name: </label>
+      <input type="text" name="user[first_name]" placeholder="First Name">
     </div>
     <div class="">
-      <label>Alias: </label>
-      <input type="text" name="user[alias]" placeholder="Name">
+      <label>Last Name: </label>
+      <input type="text" name="user[last_name]" placeholder="Last Name">
     </div>
     <div class="">
       <label>E-mail: </label>
@@ -38,10 +38,6 @@
     <div class="">
       <label>Confirm Pwd: </label>
       <input type="password" name="user[password_confirmation]" placeholder="Password Confirmation">
-    </div>
-    <div class="">
-      <label>Birthdate: </label>
-      <input type="date" name="user[birthdate]" placeholder="Birthdate">
     </div>
     <input type="submit" value="Register User">
   </form>

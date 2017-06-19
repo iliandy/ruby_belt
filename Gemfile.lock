@@ -50,9 +50,6 @@ GEM
       execjs
     coffee-script-source (1.12.2)
     concurrent-ruby (1.0.5)
-    date_validator (0.9.0)
-      activemodel
-      activesupport
     debug_inspector (0.0.3)
     erubis (2.7.0)
     execjs (2.7.0)
@@ -154,7 +151,6 @@ DEPENDENCIES
   bcrypt (~> 3.1.7)
   byebug
   coffee-rails (~> 4.1.0)
-  date_validator
   hirb
   jbuilder (~> 2.0)
   jquery-rails

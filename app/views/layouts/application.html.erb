@@ -6,19 +6,19 @@
   <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
   <%= csrf_meta_tags %>
 </head>
-<body>
-  <% if session[:user_id] %>
-      <a href="/sessions/<%= session[:user_id] %>" data-method="delete">Logout</a>
-    <% end %>
-
-    <%= yield %>
-
-    <div class="msgs">
-      <% if flash[:msgs] %>
-        <% flash[:msgs].each do |msg| %>
-          <p><%= msg %></p>
+  <body>
+    <% if session[:user_id] %>
+          <a href="/sessions/<%= session[:user_id] %>" data-method="delete">Logout</a>
         <% end %>
-      <% end %>
-    </div>
-</body>
+
+        <%= yield %>
+
+        <div class="msgs">
+          <% if flash[:msgs] %>
+            <% flash[:msgs].each do |msg| %>
+              <p><%= msg %></p>
+            <% end %>
+          <% end %>
+        </div>
+  </body>
 </html>
