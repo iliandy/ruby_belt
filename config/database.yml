@@ -82,4 +82,3 @@ test:
 production:
   <<: *default
   database: ror_belt_production
-  password: <%= ENV['ROR_BELT_DATABASE_PASSWORD'] %>
