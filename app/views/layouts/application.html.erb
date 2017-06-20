@@ -8,17 +8,17 @@
 </head>
   <body>
     <% if session[:user_id] %>
-          <a href="/sessions/<%= session[:user_id] %>" data-method="delete">Logout</a>
+      <a href="/sessions/<%= session[:user_id] %>" data-method="delete">Logout</a>
+    <% end %>
+
+    <%= yield %>
+
+    <div class="msgs">
+      <% if flash[:msgs] %>
+        <% flash[:msgs].each do |msg| %>
+          <p><%= msg %></p>
         <% end %>
-
-        <%= yield %>
-
-        <div class="msgs">
-          <% if flash[:msgs] %>
-            <% flash[:msgs].each do |msg| %>
-              <p><%= msg %></p>
-            <% end %>
-          <% end %>
-        </div>
+      <% end %>
+    </div>
   </body>
 </html>

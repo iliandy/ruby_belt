@@ -1,6 +1,6 @@
 class UsersController < ApplicationController
   before_action :user_logged_in, only: [:new]
-  before_action :user_authorized, only: [:create, :dashboard]
+  before_action :user_authorized, only: [:dashboard]
 
   def new
     # render "new.html.erb"
@@ -11,7 +11,7 @@ class UsersController < ApplicationController
 
     if user.valid?
       session[:user_id] = user.id
-      redirect_to "/pokes"
+      redirect_to "/shoes"
     else
       flash[:msgs] = user.errors.full_messages
       redirect_to "/"
